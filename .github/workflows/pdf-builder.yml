@@ -4,7 +4,7 @@ on:
     tags:
     - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
-name: Upload Release Asset
+name: Upload pdf-files release-asset
 
 jobs:
   build:
@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build project # This would actually build your project, using zip for an example artifact
+      - name: Build PDFs
         run: |
           sudo apt install texlive-latex-base
           mkdir pdf-files
@@ -25,7 +25,6 @@ jobs:
             mv $BASENAME.pdf pdf-files/$BASENAME.pdf
           done
           zip -r pdf-files.zip pdf-files
-          rm -r pdf-files
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
