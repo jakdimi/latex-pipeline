@@ -17,7 +17,7 @@ jobs:
         run: |
           sudo apt install texlive-latex-base
           mkdir temp
-          for FILE in ./tex-files/
+          for FILE in $(git ls '*.tex')
           do
             echo "looking at file .................................."
             if [[ $FILE == *.tex ]] 
