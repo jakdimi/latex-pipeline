@@ -19,6 +19,7 @@ jobs:
           mkdir temp
           for FILE in ./tex-files/
           do
+            echo "looking at file .................................."
             if [[ $FILE == *.tex ]] 
             then
               BASENAME=$(basename "$1" .tex)
