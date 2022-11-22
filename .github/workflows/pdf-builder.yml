@@ -16,16 +16,16 @@ jobs:
       - name: Build project # This would actually build your project, using zip for an example artifact
         run: |
           sudo apt install texlive-latex-base
-          mkdir temp
+          mkdir pdf-files
           echo $(git ls-files '*.tex')
           for FILE in $(git ls-files '*.tex')
           do
             BASENAME=$(basename $FILE .tex)
             pdflatex $FILE
-            mv $BASENAME.pdf temp/$BASENAME.pdf
+            mv $BASENAME.pdf pdf-files/$BASENAME.pdf
           done
-          zip -r pdf-files.zip temp
-          rm -r temp
+          zip -r pdf-files.zip pdf-files
+          rm -r pdf-files
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
