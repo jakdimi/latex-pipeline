@@ -24,7 +24,7 @@ jobs:
             if [[ $FILE == *.tex ]] 
             then
               BASENAME=$(basename "$1" .tex)
-              pdflatex $FILE ./temp/($BASENAME).pdf
+              pdflatex $FILE ./temp/$BASENAME.pdf
             fi
           done
           rm -r temp
