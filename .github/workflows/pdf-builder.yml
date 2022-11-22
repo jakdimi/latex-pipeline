@@ -22,7 +22,7 @@ jobs:
           do
             BASENAME=$(basename $FILE .tex)
             pdflatex $FILE
-            mv $BASENAME.pdf pdf-files/$BASENAME.pdf
+            mv $BASENAME.pdf temp/$BASENAME.pdf
           done
           zip -r pdf-files.zip temp
           rm -r temp
