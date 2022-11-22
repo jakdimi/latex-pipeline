@@ -17,14 +17,14 @@ jobs:
         run: |
           #sudo apt install texlive-latex-base
           mkdir temp
-          echo $(git ls '*.tex')
-          for FILE in $(git ls '*.tex')
+          echo $(git ls-files '*.tex')
+          for FILE in $(git ls-files '*.tex')
           do
-            echo "looking at file .................................."
+            echo "looking at file $FILE"
             if [[ $FILE == *.tex ]] 
             then
               BASENAME=$(basename "$1" .tex)
-              pdflatex $FILE ./temp/$(basename).pdf
+              pdflatex $FILE ./temp/($BASENAME).pdf
             fi
           done
           rm -r temp
