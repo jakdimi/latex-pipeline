@@ -27,6 +27,7 @@ jobs:
               pdflatex $FILE ./temp/$BASENAME.pdf
             fi
           done
+          tree . | echo
           rm -r temp
       - name: Create Release
         id: create_release
