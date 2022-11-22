@@ -20,13 +20,13 @@ jobs:
           echo $(git ls-files '*.tex')
           for FILE in $(git ls-files '*.tex')
           do
-            BASENAME=$(basename "$1" .tex)
+            BASENAME=$(basename $FILE .tex)
             pdflatex $FILE
             mv $BASENAME.pdf pdf-files/$BASENAME.pdf
           done
           ls -a
-          ls -a temp
-          rm -r temp
+          ls -a pdf-files
+          rm -r pdf-files
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
